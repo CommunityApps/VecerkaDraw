@@ -1,0 +1,152 @@
+{
+  "project_info": {
+    "project_number": "230813869429",
+    "firebase_url": "https://vecerka-c4bec.firebaseio.com",
+    "project_id": "vecerka-c4bec",
+    "storage_bucket": "vecerka-c4bec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230813869429:android:9f2f13991aaf4dc9",
+        "android_client_info": {
+          "package_name": "com.example.standa.vecerka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230813869429-n39h0a06ep5b9ea8a2bv77k5vg51v88t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.standa.vecerka",
+            "certificate_hash": "cb360233261153dd8e4ba126b126e14b2692909b"
+          }
+        },
+        {
+          "client_id": "230813869429-mfd71j3khd98u8dk6j1k17p9ag9raqbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7C7FKQaEDO4nHSubQC2r0dZSw_5N1Yj0"
+        },
+        {
+          "current_key": "AIzaSyCbmp2SEzDNFNFb1rIoE-ZvoDDSXWLdSlo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230813869429-mfd71j3khd98u8dk6j1k17p9ag9raqbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230813869429:android:ce48714a2c1bca0c",
+        "android_client_info": {
+          "package_name": "com.example.standa.vecerkadraw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230813869429-33p83i0i55ucsv2a5bedcbr9j61dlofb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.standa.vecerkadraw",
+            "certificate_hash": "cb360233261153dd8e4ba126b126e14b2692909b"
+          }
+        },
+        {
+          "client_id": "230813869429-mfd71j3khd98u8dk6j1k17p9ag9raqbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7C7FKQaEDO4nHSubQC2r0dZSw_5N1Yj0"
+        },
+        {
+          "current_key": "AIzaSyCbmp2SEzDNFNFb1rIoE-ZvoDDSXWLdSlo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230813869429-mfd71j3khd98u8dk6j1k17p9ag9raqbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230813869429:android:3a92b94d3eb7816f",
+        "android_client_info": {
+          "package_name": "com.example.standa.vecerkadrawer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230813869429-dsbg94dcj0dl820uv1d2l1n8f9gr7q4d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.standa.vecerkadrawer",
+            "certificate_hash": "cb360233261153dd8e4ba126b126e14b2692909b"
+          }
+        },
+        {
+          "client_id": "230813869429-mfd71j3khd98u8dk6j1k17p9ag9raqbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7C7FKQaEDO4nHSubQC2r0dZSw_5N1Yj0"
+        },
+        {
+          "current_key": "AIzaSyCbmp2SEzDNFNFb1rIoE-ZvoDDSXWLdSlo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230813869429-mfd71j3khd98u8dk6j1k17p9ag9raqbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
