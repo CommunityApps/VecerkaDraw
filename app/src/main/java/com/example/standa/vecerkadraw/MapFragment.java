@@ -14,6 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -104,6 +107,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map1);
         mapFragment.getMapAsync(this);
         ActivityCompat.requestPermissions(getActivity(),new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+
+
+
 
 
         return view;
@@ -208,11 +214,26 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
+        final Switch card = (Switch) getView().findViewById(R.id.switch5);
+        card.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (card.isChecked()){
+                    //card.setText("ANO");
+                    yesCard.setVisible(true);
+                    noCard.setVisible(false);
 
 
 
+                }else{
+                    //card.setText("NE");
+                    noCard.setVisible(true);
+                    yesCard.setVisible(true);
+                }
+            }
+        });
 
     }
+
 
 
     /**
