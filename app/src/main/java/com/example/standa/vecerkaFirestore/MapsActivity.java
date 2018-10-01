@@ -1,6 +1,5 @@
-package com.example.standa.vecerkadraw;
+package com.example.standa.vecerkaFirestore;
 
-import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 

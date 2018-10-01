@@ -1,6 +1,5 @@
-package com.example.standa.vecerkadraw;
+package com.example.standa.vecerkaFirestore;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -14,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
@@ -27,6 +25,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,9 +33,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
@@ -162,57 +163,100 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         //firestore test
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+//        db.collection("Vecerka")
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            List<Vecerky> vecerkyList = new ArrayList<>();
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//
+//
+//                                LatLng location=new LatLng(document.getGeoPoint("Geopoint").getLatitude(),document.getGeoPoint("Geopoint").getLongitude());
+//                                map.addMarker(new MarkerOptions().position(location).title(document.getString("Name")));
+//                            }
+//                        } else {
+//                            Log.w(TAG, "Error getting documents.", task.getException());
+//                        }
+//                    }
+//                });
+
         db.collection("Vecerka")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                LatLng location=new LatLng(document.getGeoPoint("Geopoint").getLatitude(),document.getGeoPoint("Geopoint").getLongitude());
-                                map.addMarker(new MarkerOptions().position(location).title(document.getString("Title")));
+            .get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            //List<Note> noteList = new ArrayList<>();
+
+                            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                                Vecerky vecerky = documentSnapshot.toObject(Vecerky.class);
+
+
+                                LatLng location=new LatLng(documentSnapshot.getGeoPoint("Geopoint").getLatitude(),documentSnapshot.getGeoPoint("Geopoint").getLongitude());
+                                boolean card = vecerky.getCard();
+                                String title = null;
+                                if(card==true){
+
+                                    title = "Bere karty";
+                                    //gMap.addMarker(new MarkerOptions().position(location).title(title)).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.market));
+                                    yesCard = map.addMarker(new MarkerOptions().position(location).title(title));
+                                    yesCard.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.market));
+
+                                }
+                                else{
+
+                                    title = "Nebere karty";
+                                    noCard = map.addMarker(new MarkerOptions().position(location).title(title));
+                                    noCard.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.market));
+                                }
+
+
+
                             }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
                         }
-                    }
-                });
+                    });
+
         //add vecerky
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot s : dataSnapshot.getChildren()){
-                    Vecerky vecerky = s.getValue(Vecerky.class);
-                    LatLng location=new LatLng(vecerky.lat,vecerky.lon);
-                    int card = vecerky.card;
-                    String title = null;
-                    if(card == 1){
-
-                        title = "Bere karty";
-                        //gMap.addMarker(new MarkerOptions().position(location).title(title)).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.market));
-                        yesCard = map.addMarker(new MarkerOptions().position(location).title(title));
-                        yesCard.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.market));
-
-                    }
-                    else{
-
-                        title = "Nebere karty";
-                        noCard = map.addMarker(new MarkerOptions().position(location).title(title));
-                        noCard.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.market));
-                    }
-
-
-                }
-
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                throw databaseError.toException();
-            }
-        });
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+//
+//
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                for (DataSnapshot s : dataSnapshot.getChildren()){
+//                    Vecerky vecerky = s.getValue(Vecerky.class);
+//                    LatLng location=new LatLng(vecerky.lat,vecerky.lon);
+//                    int card = vecerky.card;
+//                    String title = null;
+//                    if(card == 1){
+//
+//                        title = "Bere karty";
+//                        //gMap.addMarker(new MarkerOptions().position(location).title(title)).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.market));
+//                        yesCard = map.addMarker(new MarkerOptions().position(location).title(title));
+//                        yesCard.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.market));
+//
+//                    }
+//                    else{
+//
+//                        title = "Nebere karty";
+//                        noCard = map.addMarker(new MarkerOptions().position(location).title(title));
+//                        noCard.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.market));
+//                    }
+//
+//
+//                }
+//
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                throw databaseError.toException();
+//            }
+//        });
 
         final Switch card = (Switch) getView().findViewById(R.id.switch5);
         card.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

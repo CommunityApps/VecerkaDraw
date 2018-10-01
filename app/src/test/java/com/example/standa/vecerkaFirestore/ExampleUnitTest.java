@@ -1,4 +1,4 @@
-package com.example.standa.vecerkadraw;
+package com.example.standa.vecerkaFirestore;
 
 import org.junit.Test;
 

@@ -4,7 +4,7 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=CB:36:02:33:26:11:53:DD:8E:4B:A1:26:B1:26:E1:4B:26:92:90:9B%3Bcom.example.standa.vecerkadraw
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=CB:36:02:33:26:11:53:DD:8E:4B:A1:26:B1:26:E1:4B:26:92:90:9B%3Bcom.example.standa.vecerkaFirestore
 
     You can also add your credentials to an existing key, using these values:
 
